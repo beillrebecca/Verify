@@ -6,7 +6,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 <div class="verify-container">
   <div class="verify-box">
@@ -16,23 +15,21 @@
 
     <!-- メール用メッセージ -->
     <p id="emailMessage" class="verify-text">
-      確認コードをメールで送信しました。<br>
-      メールに記載された6桁のコードを入力してください。
+      確認メールを送信しました。<br>
+      メール内のリンクをクリックして認証してください。
     </p>
 
-    <!-- コード入力メッセージ -->
-    <p id="codeMessage" class="verify-text">
+    <!-- 電話番号用コード入力 -->
+    <p id="codeMessage" class="verify-text" style="display:none;">
       確認コードを入力してください
     </p>
-
-    <!-- コード入力（メール・電話共通） -->
-    <input type="text" id="code" placeholder="確認コード">
+    <input type="text" id="code" placeholder="確認コード" style="display:none;">
 
     <!-- 認証ボタン -->
     <button id="verifyBtn">認証</button>
 
-    <!-- 再送信ボタン -->
-    <p id="resendCode" class="resend">
+    <!-- 再送信ボタン（電話番号用） -->
+    <p id="resendCode" class="resend" style="display:none;">
       コードを再送信
     </p>
 
