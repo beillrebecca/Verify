@@ -14,18 +14,24 @@
     <!-- ロゴ -->
     <div class="verify-logo">Recomen</div>
 
-    <!-- 説明 -->
-    <p class="verify-text">
+    <!-- メール用メッセージ -->
+    <p id="emailMessage" class="verify-text">
+      確認メールを送信しました。<br>
+      メール内のリンクをクリックしてください。
+    </p>
+
+    <!-- 電話番号用メッセージ -->
+    <p id="codeMessage" class="verify-text">
       確認コードを入力してください
     </p>
 
-    <!-- コード入力 -->
-    <input type="text" id="code" placeholder="確認コード（電話番号の場合のみ）">
+    <!-- コード入力（電話のみ） -->
+    <input type="text" id="code" placeholder="確認コード">
 
     <!-- 認証ボタン -->
     <button id="verifyBtn">認証</button>
 
-    <!-- 再送信 -->
+    <!-- 再送信（電話のみ） -->
     <p id="resendCode" class="resend">
       コードを再送信
     </p>
