@@ -1,38 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const signupBtn = document.getElementById("signupBtn");
+  const verifyBtn = document.getElementById("verifyBtn");
 
-  signupBtn.addEventListener("click", () => {
-    const contact = document.getElementById("contact").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const passwordConfirm = document.getElementById("passwordConfirm").value.trim();
+  verifyBtn.addEventListener("click", () => {
+    const user = firebase.auth().currentUser;
 
-    if (!contact || !password || !passwordConfirm) {
-      alert("全て入力してください");
+    if (!user) {
+      alert("ログイン情報がありません。もう一度登録してください。");
       return;
     }
 
-    if (password !== passwordConfirm) {
-      alert("パスワードが一致しません");
-      return;
-    }
-
-    // メール登録
-    firebase.auth().createUserWithEmailAndPassword(contact, password)
-      .then((userCredential) => {
-
-        // 🔥 メール認証送信
-        userCredential.user.sendEmailVerification()
-          .then(() => {
-            alert("確認メールを送信しました！");
-
-            // 👇 ここがさっきのやつ
-            location.href = "../Verify/index.html";
-          });
-
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("登録エラー: " + error.message);
-      });
+    // 最新情報に更新
+    user.reload().then(() => {
+      if (user.emailVerified) {
+        alert("認証完了！ログインページへ進みます。");
+        location.href = "../Login/";
+      } else {
+        alert("まだ認証されていません。メールのリンクを確認してください。");
+      }
+    });
   });
 });
